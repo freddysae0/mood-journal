@@ -20,6 +20,9 @@ jobs:
           node-version: 20
           cache: pnpm
 
+      - name: 🔧 Install pnpm
+        run: corepack enable && corepack prepare pnpm@latest --activate
+
       - name: 📦 Install dependencies
         run: pnpm run init
 
@@ -65,8 +68,12 @@ jobs:
           node-version: 20
           cache: pnpm
 
+      - name: 🔧 Install pnpm
+        run: corepack enable && corepack prepare pnpm@latest --activate
+
       - name: Enter into the react folder
         run: cd react
+
 
       - name: 📦 Install dependencies
         run: cd react && pnpm install
