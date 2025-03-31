@@ -21,19 +21,23 @@ jobs:
           cache: npm
 
       - name: 📦 Install dependencies
-        run: cd react && npm install
+        run: pnpm run init
 
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+        
       - name: 🎨 Check format (Prettier)
-        run: cd react && npm run prettier:hook .
+        run: cd react && npm run format:hook .
 
       - name: 🔍 Lint (ESLint)
-        run: cd react && npm run lint ./src
+        run: cd react && npm run lint 
 
       - name: 🧪 Run unit tests (Vitest)
         run: cd react && npm run test
 
+
       - name: 🧪 Run e2e tests (Cypress)
-        run: npm run test
+        run: pnpm run test
 
       - name: 🔨 Build project
         run: cd react && npm run build
