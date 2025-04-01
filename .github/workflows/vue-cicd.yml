@@ -37,6 +37,9 @@ jobs:
       - name: 🔍 Lint (ESLint)
         run: cd vue && npm run lint
 
+      - name: 🧪 Run typechecks 
+        run: cd vue && pnpm run typecheck
+
       - name: 🧪 Run unit tests (Vitest)
         run: cd vue && npm run test:unit 
         
