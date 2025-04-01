@@ -56,7 +56,7 @@
     "happy-dom": "latest",
     "input-otp": "1.4.1",
     "jsdom": "latest",
-    "lucide-react": "^0.454.0",
+    "lucide-react": "^0.440.0",
     "next": "15.1.0",
     "next-themes": "latest",
     "react": "^19",

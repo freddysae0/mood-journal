@@ -30,6 +30,7 @@ Each project has its own set of commands for linting, formatting, and unit testi
 
 - Linting
 - Formatting
+- Typechecking
 - Unit testing
 - E2E testing
 
@@ -44,5 +45,5 @@ This will run all the tests for both projects.
 
 
 # Deployment links
-https://shrekreact.netlify.app/
-https://shrekvue.netlify.app/
+https://moodjournal.netlify.app/
+https://moodjournalv.netlify.app/

@@ -6,6 +6,12 @@ pre-commit:
 
     lint-react:
       run: cd react && git diff --cached --name-only --diff-filter=d | grep -E 'react/.*\.(js|ts|jsx|tsx)$' | sed 's/^react\///' | xargs -r npx eslint --fix
+    
+    
+    typecheck-vue:
+      run: cd vue && npx tsc --noEmit
+    typecheck-react:
+      run: cd react && npx tsc --noEmit
 
     prettier-vue:
       run:  cd vue && git diff --cached --name-only --diff-filter=d | grep -E 'vue/.*\.(js|ts|jsx|tsx)$' | sed 's/^vue\///' | xargs -r npx prettier --write
