@@ -22,9 +22,9 @@ This will start the development servers for both **Next.js** and **Vue** project
 
 ---
 
-# Linting, Formatting, and Testing
+# Linting, Typechecking, Formatting, and Testing
 
-Each project has its own set of commands for linting, formatting, and unit testing.
+Each project has its own set of commands for linting, formatting, typechecking, and unit testing.
 
 **Lefthook** is configured to automatically run the necessary hooks on every commit to check for:
 
