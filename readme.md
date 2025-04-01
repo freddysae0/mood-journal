@@ -47,10 +47,10 @@ Mood Journal is a simple yet powerful tool designed to help you monitor your emo
 
 
 ## CI/CD
+This project uses GitHub Actions for continuous integration and deployment, running two separate pipelines: one for the Vue.js project and another for the Next.js project. Our automated workflow ensures code quality, thorough testing, and reliable deployments.
 
 ## Nextjs Pipeline 
 
-This project uses GitHub Actions for continuous integration and deployment, running two separate pipelines: one for the Vue.js project and another for the Next.js project. Our automated workflow ensures code quality, thorough testing, and reliable deployments.
 ### 🔄 When does the pipeline run?  
 The workflow runs on:  
 - Every **push** to the `master` branch  
