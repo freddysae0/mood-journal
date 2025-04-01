@@ -46,7 +46,9 @@ Mood Journal is a simple yet powerful tool designed to help you monitor your emo
 **Example:** Taylor notices they've been feeling down more often but isn't sure why. After a month of consistent mood tracking with detailed notes, they discover that their mood tends to worsen after spending time with a particular friend who often makes negative comments. This insight helps them set healthier boundaries.
 
 
-## CI/CD Pipeline
+## CI/CD
+
+## Nextjs Pipeline 
 
 This project uses GitHub Actions for continuous integration and deployment, running two separate pipelines: one for the Vue.js project and another for the Next.js project. Our automated workflow ensures code quality, thorough testing, and reliable deployments.
 ### 🔄 When does the pipeline run?  
@@ -80,7 +82,9 @@ The workflow runs on:
 - Uses **GitHub Secrets** (`NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID_REACT`) for authentication and deployment.  
 
 
-## CI/CD Pipeline - Vue
+
+
+## Vuejs Pipeline 
 
 ### 🔄 When does the pipeline run?  
 The workflow runs on:  
