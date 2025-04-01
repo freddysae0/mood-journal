@@ -80,7 +80,7 @@ jobs:
         run: cd react && pnpm install
 
       - name: 🚀 Install Netlify CLI
-        run: pnpm install -g netlify-cli
+        run: npm install -g netlify-cli
 
       - name: 🚀 Deploy to Netlify
         run: cd react && netlify deploy --build --dir=.next --prod

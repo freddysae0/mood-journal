@@ -21,23 +21,26 @@ jobs:
           node-version: 20
           cache: npm
 
+      - name: 🔧 Install pnpm
+        run: npm install -g pnpm
+        
       - name: 📦 Install dependencies
-        run: cd vue && npm install
+        run: pnpm run init
 
       - name: 🎨 Check format (Prettier)
-        run: cd vue && npm run format:check .
+        run: cd vue && npm run format
 
       - name: 🔍 Lint (ESLint)
         run: cd vue && npm run lint
 
       - name: 🧪 Run unit tests (Vitest)
-        run: cd vue && npm run test:unit --run
+        run: cd vue && npm run test:unit 
         
       - name: 🧪 Run e2e tests (Cypress)
         run: npm run test
 
       - name: 🔨 Build project
-        run: cd vue && npm run build
+        run: cd vue && pnpm run build
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
@@ -61,14 +64,17 @@ jobs:
           node-version: 20
           cache: npm
 
+      - name: 🔧 Install pnpm
+        run: npm install -g pnpm
+
       - name: Enter into the vue folder
         run: cd vue
 
       - name: 📦 Install dependencies
-        run: cd vue && npm install
+        run: cd vue && pnpm install
 
       - name: 🔨 Build project
-        run: cd vue && npm run build
+        run: cd vue && pnpm run build
 
       - name: 🚀 Install Netlify CLI
         run: npm install -g netlify-cli
