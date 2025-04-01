@@ -45,6 +45,74 @@ Mood Journal is a simple yet powerful tool designed to help you monitor your emo
 
 **Example:** Taylor notices they've been feeling down more often but isn't sure why. After a month of consistent mood tracking with detailed notes, they discover that their mood tends to worsen after spending time with a particular friend who often makes negative comments. This insight helps them set healthier boundaries.
 
+
+## CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment, running two separate pipelines: one for the Vue.js project and another for the Next.js project. Our automated workflow ensures code quality, thorough testing, and reliable deployments.
+### 🔄 When does the pipeline run?  
+The workflow runs on:  
+- Every **push** to the `master` branch  
+- Every **pull request** to `master`  
+
+### 1️⃣ Setup & Installation  
+- Sets up **Node.js 20** and uses **pnpm** as the package manager.  
+- Installs dependencies by running `pnpm run init` in the root directory.  
+- Installs **Playwright** browsers for E2E testing.  
+
+### 2️⃣ Code Quality Checks  
+- **Formatting:** Ensures code follows Prettier rules (`pnpm run format:hook .` inside `react`).  
+- **Linting:** Runs ESLint to catch potential issues (`pnpm run lint` in `react`).  
+- **Type Checking:** Uses TypeScript to detect type errors (`pnpm run typecheck` in `react`).  
+
+### 3️⃣ Automated Testing  
+- **Unit Tests:** Runs **Vitest** tests (`pnpm run test` in `react`).  
+- **End-to-End (E2E) Tests:**  
+  - Installs Playwright browsers.  
+  - Runs Playwright tests (`pnpm run test` in the root directory).  
+
+### 4️⃣ Build  
+- Creates the production build (`pnpm run build` in `react`).  
+- Stores test reports as artifacts in GitHub Actions.  
+
+### 5️⃣ Deployment to Netlify (Only on `master`)  
+- Installs **Netlify CLI**.  
+- Deploys the app using `netlify deploy --build --dir=.next --prod`.  
+- Uses **GitHub Secrets** (`NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID_REACT`) for authentication and deployment.  
+
+
+## CI/CD Pipeline - Vue
+
+### 🔄 When does the pipeline run?  
+The workflow runs on:  
+- Every **push** to the `master` branch  
+- Every **pull request** to `master`  
+
+### 1️⃣ Setup & Installation  
+- Sets up **Node.js 20** and uses **pnpm** as the package manager.  
+- Installs dependencies by running `pnpm run init` in the root directory.  
+- Installs **Playwright** browsers for E2E testing.  
+
+### 2️⃣ Code Quality Checks  
+- **Formatting:** Ensures code follows Prettier rules (`npm run format` inside `vue`).  
+- **Linting:** Runs ESLint to catch potential issues (`npm run lint` in `vue`).  
+- **Type Checking:** Uses TypeScript to detect type errors (`pnpm run typecheck` in `vue`).  
+
+### 3️⃣ Automated Testing  
+- **Unit Tests:** Runs **Vitest** tests (`npm run test:unit` in `vue`).  
+- **End-to-End (E2E) Tests:**  
+  - Installs Playwright browsers.  
+  - Runs Playwright tests (`npm run test` in the root directory).  
+
+### 4️⃣ Build  
+- Creates the production build (`pnpm run build` in `vue`).  
+- Stores test reports as artifacts in GitHub Actions.  
+
+### 5️⃣ Deployment to Netlify (Only on `master`)  
+- Installs **Netlify CLI**.  
+- Deploys the app using `netlify deploy --dir=dist --prod`.  
+- Uses **GitHub Secrets** (`NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID_VUE`) for authentication and deployment.  
+
+
 ## Getting Started
 
 ### Prerequisites
