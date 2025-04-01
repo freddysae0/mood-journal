@@ -27,6 +27,10 @@ jobs:
       - name: 📦 Install dependencies
         run: pnpm run init
 
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+        
+
       - name: 🎨 Check format (Prettier)
         run: cd vue && npm run format
 
