@@ -21,15 +21,12 @@
     </div>
 
     <div class="mb-6">
-      <label for="note" class="block mb-2 font-medium"
-        >Add a note (optional)</label
-      >
       <textarea
         id="note"
         v-model="note"
         rows="3"
         class="w-full p-3 border rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none dark:bg-gray-700 dark:border-gray-600"
-        placeholder="Write about your day..."
+        placeholder="Add a note about your day (optional)"
       ></textarea>
     </div>
 
@@ -38,7 +35,7 @@
       :disabled="!selectedMood"
       class="w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      Save Entry
+      Save Today's Mood
     </button>
   </div>
 </template>

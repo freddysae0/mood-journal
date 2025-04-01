@@ -40,7 +40,7 @@ jobs:
         run: cd react && pnpm run test
 
 
-      - name: 🧪 Run e2e tests (Cypress)
+      - name: 🧪 Run e2e tests (Playwright))
         run: pnpm run test
 
       - name: 🔨 Build project

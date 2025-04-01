@@ -97,7 +97,7 @@ function addMoodEntry(entry) {
   // Check if there's an entry for the same day
   const today = new Date(entry.date).toISOString().split("T")[0];
   const existingEntryIndex = moodEntries.value.findIndex(
-    (e) => new Date(e.date).toISOString().split("T")[0] === today,
+    (e) => new Date(e.date).toISOString().split("T")[0] === today
   );
 
   if (existingEntryIndex !== -1) {
@@ -129,7 +129,7 @@ onMounted(() => {
   } else {
     // Check system preference
     const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
+      "(prefers-color-scheme: dark)"
     ).matches;
     isDarkMode.value = prefersDark;
   }
@@ -141,7 +141,7 @@ watch(
   (newEntries) => {
     saveEntriesToStorage(newEntries);
   },
-  { deep: true },
+  { deep: true }
 );
 </script>
 
