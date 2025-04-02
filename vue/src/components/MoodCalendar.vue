@@ -75,11 +75,11 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import {
+  getDateForDay,
   getDaysInMonth,
   getFirstDayOfMonth,
-  getDateForDay,
 } from "../utils/date-utils";
 import { getEntryForDate } from "../utils/mood-utils";
 

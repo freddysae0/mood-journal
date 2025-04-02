@@ -23,28 +23,24 @@ jobs:
 
       - name: 🔧 Install pnpm
         run: npm install -g pnpm
-        
+
       - name: 📦 Install dependencies
         run: pnpm run init
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-        
+      - name: 🎨 Check formatting & linting (biome)
+        run: npx @biomejs/biome check .
 
-      - name: 🎨 Check format (Prettier)
-        run: cd vue && npm run format
-
-      - name: 🔍 Lint (ESLint)
-        run: cd vue && npm run lint
-
-      - name: 🧪 Run typechecks 
+      - name: 🧪 Run typechecks
         run: cd vue && pnpm run typecheck
 
       - name: 🧪 Run unit tests (Vitest)
-        run: cd vue && npm run test:unit 
-        
+        run: cd vue && npm run test:unit
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
       - name: 🧪 Run e2e tests (Playwright)
-        run: npm run test
+        run: npx playwright test
 
       - name: 🔨 Build project
         run: cd vue && pnpm run build

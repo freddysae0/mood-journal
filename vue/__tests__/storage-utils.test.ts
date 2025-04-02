@@ -1,6 +1,6 @@
-import { saveEntriesToStorage, loadEntriesFromStorage } from "./storage-utils";
 import type { MoodEntry } from "@/types/mood";
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { loadEntriesFromStorage, saveEntriesToStorage } from "./storage-utils";
 
 describe("Storage Utilities", () => {
   beforeEach(() => {

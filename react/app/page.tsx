@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import MoodCalendar from "@/components/mood-calendar";
 import MoodForm from "@/components/mood-form";
 import MoodHistory from "@/components/mood-history";
-import MoodCalendar from "@/components/mood-calendar";
 import ThemeToggle from "@/components/theme-toggle";
-import type { MoodEntry } from "@/types/mood";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import type { MoodEntry } from "@/types/mood";
 import { Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [moodEntries, setMoodEntries] = useState<MoodEntry[]>([]);
