@@ -1,11 +1,11 @@
 import {
+  formatDateString,
+  getDateForDay,
   getDaysInMonth,
   getFirstDayOfMonth,
-  formatDateString,
   isSameDay,
-  getDateForDay,
 } from "@/utils/date-utils";
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 describe("Date Utilities", () => {
   describe("getDaysInMonth", () => {

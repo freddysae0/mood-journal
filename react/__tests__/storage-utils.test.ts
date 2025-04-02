@@ -1,8 +1,8 @@
-import {
-  saveEntriesToStorage,
-  loadEntriesFromStorage,
-} from "@/utils/storage-utils";
 import type { MoodEntry } from "@/types/mood";
+import {
+  loadEntriesFromStorage,
+  saveEntriesToStorage,
+} from "@/utils/storage-utils";
 
 describe("Storage Utilities", () => {
   beforeEach(() => {

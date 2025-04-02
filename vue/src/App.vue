@@ -71,15 +71,15 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from "vue";
-import ThemeToggle from "./components/ThemeToggle.vue";
+import { computed, onMounted, ref, watch } from "vue";
+import MoodCalendar from "./components/MoodCalendar.vue";
 import MoodForm from "./components/MoodForm.vue";
 import MoodHistory from "./components/MoodHistory.vue";
-import MoodCalendar from "./components/MoodCalendar.vue";
+import ThemeToggle from "./components/ThemeToggle.vue";
 import { sortEntriesByDate } from "./utils/mood-utils";
 import {
-  saveEntriesToStorage,
   loadEntriesFromStorage,
+  saveEntriesToStorage,
 } from "./utils/storage-utils";
 
 // State

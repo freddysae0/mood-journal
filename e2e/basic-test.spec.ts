@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 const testingFn = (app: "Vue" | "React") => {
   test.describe(`Shrek Adjective Changer - - - ${app} TEST`, () => {

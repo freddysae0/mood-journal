@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import type { MoodEntry } from "@/types/mood";
 import { formatDistanceToNow } from "date-fns";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 
 interface MoodHistoryProps {
   entries: MoodEntry[];

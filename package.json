@@ -3,7 +3,8 @@
     "test": "cd react && npm run test && cd ../vue && npm run test:unit --run && cd .. && npx playwright test --project=chromium",
     "typecheck": "cd react && pnpm run typecheck && cd ../vue && pnpm run typecheck ",
     "init": "npm i && cd react && pnpm i && cd ../vue && pnpm i",
-    "dev": "concurrently \"cd react/ && PORT=4950 npm run dev\" \"cd vue && npm run dev\""
+    "dev": "concurrently \"cd react/ && PORT=4950 npm run dev\" \"cd vue && npm run dev\"",
+    "lint-format": "npx @biomejs/biome check --fix ."
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
