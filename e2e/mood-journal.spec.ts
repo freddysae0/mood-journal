@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { localhost, port } from "./utils";
 
 const exec = (port: string) => {
-  test.describe("Mood Journal " + port, () => {
+  test.describe(`Mood Journal ${port}`, () => {
     test.beforeEach(async ({ page }) => {
       // Clear localStorage before each test
       await page.addInitScript(() => {
@@ -32,7 +32,7 @@ const exec = (port: string) => {
       // Verify the entry appears in the timeline
       await page.locator('button:has-text("Timeline")').click();
       await expect(
-        page.locator("text=Had a great day testing with Playwright!")
+        page.locator("text=Had a great day testing with Playwright!"),
       ).toBeVisible();
     });
   });

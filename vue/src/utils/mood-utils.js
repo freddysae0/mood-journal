@@ -12,6 +12,7 @@ function generateId() {
 
   // Fallback for environments without crypto.randomUUID
   return (
+    // biome-ignore lint/style/useTemplate: ai code
     "id-" +
     Math.random().toString(36).substring(2, 15) +
     Math.random().toString(36).substring(2, 15)
@@ -21,9 +22,9 @@ function generateId() {
 /**
  * Creates a new mood entry
  */
-export function createMoodEntry(mood, note = "", id) {
+export function createMoodEntry(mood = "", note = "", id = generateId()) {
   return {
-    id: id || generateId(),
+    id,
     date: new Date().toISOString(),
     mood,
     note,
@@ -60,10 +61,9 @@ export function addOrUpdateMoodEntry(entries, newEntry) {
     const updatedEntries = [...entries];
     updatedEntries[existingEntryIndex] = newEntry;
     return updatedEntries;
-  } else {
-    // Add new entry
-    return [...entries, newEntry];
   }
+  // Add new entry
+  return [...entries, newEntry];
 }
 
 /**

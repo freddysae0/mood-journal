@@ -78,6 +78,7 @@ export default function MoodHistory({ entries }: MoodHistoryProps) {
                 </div>
               </div>
               <button
+                type="button"
                 className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-full hover:bg-secondary/50"
                 aria-label={
                   expandedEntryId === entry.id

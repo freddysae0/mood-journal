@@ -64,7 +64,7 @@ export default function MoodCalendar({ entries }: MoodCalendarProps) {
 
   const days = [];
   for (let i = 0; i < firstDayOfMonth; i++) {
-    days.push(<div key={`empty-${i}`} className="h-10 w-10"></div>);
+    days.push(<div key={`empty-${i}`} className="h-10 w-10" />);
   }
 
   for (let day = 1; day <= daysInMonth; day++) {
@@ -76,9 +76,10 @@ export default function MoodCalendar({ entries }: MoodCalendarProps) {
 
     days.push(
       <button
+        type="button"
         key={day}
         onClick={() => handleDayClick(day)}
-        className={`h-10 w-10 rounded-full flex items-center justify-center transition-all duration-200 
+        className={`h-10 w-10 rounded-full flex items-center justify-center transition-all duration-200
           ${
             isToday
               ? "ring-2 ring-primary ring-offset-2 dark:ring-offset-gray-900"

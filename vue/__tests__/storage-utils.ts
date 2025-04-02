@@ -1,4 +1,4 @@
-import { MoodEntry } from "@/types/mood";
+import type { MoodEntry } from "@/types/mood";
 
 /**
  * Saves mood entries to localStorage
