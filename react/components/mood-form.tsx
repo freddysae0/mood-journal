@@ -86,6 +86,7 @@ export default function MoodForm({ onAddEntry, entries }: MoodFormProps) {
         <div className="flex justify-center gap-6 mb-8">
           {moods.map((mood) => (
             <button
+              type="button"
               key={mood}
               onClick={() => setSelectedMood(mood)}
               className={`text-4xl p-4 rounded-full transition-all duration-300 transform hover:scale-110 shadow-sm

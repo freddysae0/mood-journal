@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { TextDecoder, TextEncoder } from "util";
+import { TextDecoder, TextEncoder } from "node:util";
 import { jest } from "@jest/globals";
 
 // Mock localStorage
@@ -34,6 +34,7 @@ jest.mock("next-themes", () => ({
 
 // Add TextEncoder/TextDecoder for Node environments
 global.TextEncoder = TextEncoder;
+// biome-ignore lint/suspicious/noExplicitAny: complex typing
 global.TextDecoder = TextDecoder as any;
 
 // Mock crypto.randomUUID

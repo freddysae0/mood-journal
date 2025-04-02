@@ -14,6 +14,7 @@ function generateId(): string {
 
   // Fallback for environments without crypto.randomUUID
   return (
+    // biome-ignore lint/style/useTemplate: ai code
     "id-" +
     Math.random().toString(36).substring(2, 15) +
     Math.random().toString(36).substring(2, 15)
@@ -72,10 +73,9 @@ export function addOrUpdateMoodEntry(
     const updatedEntries = [...entries];
     updatedEntries[existingEntryIndex] = newEntry;
     return updatedEntries;
-  } else {
-    // Add new entry
-    return [...entries, newEntry];
   }
+  // Add new entry
+  return [...entries, newEntry];
 }
 
 /**
