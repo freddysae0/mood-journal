@@ -6,10 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "test": "npx jest",
-    "format": "npx prettier . --write",
-    "format:hook": "npx prettier . --write",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -79,13 +76,9 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.2.4",
     "jest-environment-jsdom": "^29.7.0",
     "jiti": "^2.4.2",
-    "lefthook": "^1.11.5",
     "postcss": "^8",
-    "prettier": "3.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.2"
   }
