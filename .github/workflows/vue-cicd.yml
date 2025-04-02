@@ -21,9 +21,9 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      - name: 🚀 Install pnpm
-        run: corepack enable && corepack prepare pnpm@latest --activate
 
+      - name: 🔧 Install pnpm
+        run: npm install -g pnpm
 
       - name: 📦 Install dependencies
         run: pnpm run init
@@ -67,8 +67,10 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-      - name: 🚀 Install pnpm
-        run: corepack enable && corepack prepare pnpm@latest --activate
+
+
+      - name: 🔧 Install pnpm
+        run: npm install -g pnpm
 
       - name: Enter into the vue folder
         run: cd vue
