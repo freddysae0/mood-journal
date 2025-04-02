@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+              export const metadata: Metadata = {
   title: "Mood Journal",
   description: "Track your daily moods and see trends over time",
   generator: "v0.dev",
