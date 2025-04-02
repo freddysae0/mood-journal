@@ -97,15 +97,15 @@ The workflow runs on:
 - Installs **Playwright** browsers for E2E testing.  
 
 ### 2️⃣ Code Quality Checks  
-- **Formatting:** Ensures code follows Prettier rules (`npm run format` inside `vue`).  
-- **Linting:** Runs ESLint to catch potential issues (`npm run lint` in `vue`).  
+- **Formatting:** Ensures code follows Prettier rules (`pnpm run format` inside `vue`).  
+- **Linting:** Runs ESLint to catch potential issues (`pnpm run lint` in `vue`).  
 - **Type Checking:** Uses TypeScript to detect type errors (`pnpm run typecheck` in `vue`).  
 
 ### 3️⃣ Automated Testing  
-- **Unit Tests:** Runs **Vitest** tests (`npm run test:unit` in `vue`).  
+- **Unit Tests:** Runs **Vitest** tests (`pnpm run test:unit` in `vue`).  
 - **End-to-End (E2E) Tests:**  
   - Installs Playwright browsers.  
-  - Runs Playwright tests (`npm run test` in the root directory).  
+  - Runs Playwright tests (`pnpm run test` in the root directory).  
 
 ### 4️⃣ Build  
 - Creates the production build (`pnpm run build` in `vue`).  
@@ -121,8 +121,8 @@ The workflow runs on:
 
 ### Prerequisites
 
-- Node.js 16.8 or later
-- npm or yarn
+- Node.js 20 or later installed
+- pnpm
 
 
 # Installing
@@ -130,8 +130,7 @@ The workflow runs on:
 To set up both projects (Next.js and Vue):
 
 ```bash
-npm install
-npm run init
+pnpm run init
 ```
 
 ---
@@ -141,7 +140,7 @@ npm run init
 To run both projects simultaneously:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 This will start the development servers for both **Next.js** and **Vue** projects.
@@ -163,7 +162,7 @@ Each project has its own set of commands for linting, formatting, typechecking, 
 Additionally, you can manually run all tests with:
 
 ```bash
-npm run test
+pnpm run test
 ```
 
 This will run all the tests for both projects.
