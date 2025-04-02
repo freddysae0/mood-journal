@@ -72,8 +72,11 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image:
-      radial-gradient(at top left, rgba(var(--primary), 0.05), transparent 50%),
+    background-image: radial-gradient(
+        at top left,
+        rgba(var(--primary), 0.05),
+        transparent 50%
+      ),
       radial-gradient(
         at bottom right,
         rgba(var(--accent), 0.05),
