@@ -18,7 +18,7 @@ Mood Journal is a simple yet powerful tool designed to help you monitor your emo
 
 ### Built With
 
-- React / Next.js
+- Next.js  /  Vue.js
 - TypeScript
 - Tailwind CSS
 - Local Storage for data persistence
