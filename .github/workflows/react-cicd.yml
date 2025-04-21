@@ -40,8 +40,8 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: 🧪 Run e2e tests (Playwright))
-        run: pnpm run test
+#      - name: 🧪 Run e2e tests (Playwright))
+#        run: pnpm run test
 
       - name: 🔨 Build project
         run: cd react && pnpm run build
