@@ -1,4 +1,8 @@
-import type { MoodEntry, MoodType } from "@/types/mood";
+import {
+  type MoodEntry,
+  type MoodType,
+  parseMoodToBackend,
+} from "@/types/mood";
 
 /**
  * Generate a unique ID that works in both browser and test environments
@@ -32,7 +36,7 @@ export function createMoodEntry(
   return {
     id: id || generateId(),
     date: new Date().toISOString(),
-    mood,
+    mood: parseMoodToBackend(mood),
     note,
   };
 }

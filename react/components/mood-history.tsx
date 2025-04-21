@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import type { MoodEntry } from "@/types/mood";
+import { type MoodEntry, parseMoodToFrontend } from "@/types/mood";
 import { formatDistanceToNow } from "date-fns";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
@@ -22,8 +22,8 @@ export default function MoodHistory({ entries }: MoodHistoryProps) {
     setExpandedEntryId(expandedEntryId === id ? null : id);
   };
 
-  const getMoodColor = (mood: string) => {
-    switch (mood) {
+  const getMoodColor = (mood: "happy" | "sad" | "meh") => {
+    switch (parseMoodToFrontend(mood)) {
       case "😊":
         return "bg-gradient-to-br from-green-400/20 to-emerald-500/20 border-green-400/30";
       case "😐":
@@ -59,7 +59,9 @@ export default function MoodHistory({ entries }: MoodHistoryProps) {
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-4">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-sm">
-                  <span className="text-3xl">{entry.mood}</span>
+                  <span className="text-3xl">
+                    {parseMoodToFrontend(entry.mood)}
+                  </span>
                 </div>
                 <div>
                   <p className="font-medium">

@@ -1,25 +1,34 @@
 "use client";
 
+import type React from "react";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import type { MoodEntry, MoodType } from "@/types/mood";
+import { createMoodEntry, updateMoodEntry } from "@/lib/api";
+import {
+  type MoodEntry,
+  type MoodType,
+  parseMoodToBackend,
+  parseMoodToFrontend,
+} from "@/types/mood";
 import { HeartHandshake } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 interface MoodFormProps {
-  onAddEntry: (entry: MoodEntry) => void;
   entries: MoodEntry[];
+  setEntries: React.Dispatch<React.SetStateAction<MoodEntry[]>>;
 }
 
-export default function MoodForm({ onAddEntry, entries }: MoodFormProps) {
+export default function MoodForm({ entries, setEntries }: MoodFormProps) {
   const [selectedMood, setSelectedMood] = useState<MoodType | null>(null);
   const [note, setNote] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [todayEntry, setTodayEntry] = useState<MoodEntry | null>(null);
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [error, setError] = useState("");
 
   // Only render theme-dependent UI on the client to avoid hydration mismatch
   useEffect(() => {
@@ -33,7 +42,7 @@ export default function MoodForm({ onAddEntry, entries }: MoodFormProps) {
 
     if (existingEntry) {
       setTodayEntry(existingEntry);
-      setSelectedMood(existingEntry.mood);
+      setSelectedMood(parseMoodToFrontend(existingEntry.mood));
       setNote(existingEntry.note);
     } else {
       setTodayEntry(null);
@@ -49,23 +58,64 @@ export default function MoodForm({ onAddEntry, entries }: MoodFormProps) {
     "😞": "bg-gradient-to-br from-red-400 to-rose-500",
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!selectedMood) return;
 
     setIsSubmitting(true);
+    setError("");
 
-    const newEntry: MoodEntry = {
-      id: todayEntry?.id || crypto.randomUUID(),
-      date: new Date().toISOString(),
-      mood: selectedMood,
-      note,
-    };
+    try {
+      const now = new Date().toISOString();
 
-    onAddEntry(newEntry);
+      if (todayEntry) {
+        // Update existing entry
+        const updatedEntry = await updateMoodEntry(
+          Number.parseInt(todayEntry.id),
+          note,
+          selectedMood,
+          now,
+        );
 
-    setTimeout(() => {
+        // Update the entries state
+        setEntries((prev) =>
+          prev.map((entry) =>
+            entry.id === todayEntry.id
+              ? {
+                  id: updatedEntry.id.toString(),
+                  date: updatedEntry.date,
+                  mood: updatedEntry.mood,
+                  note: updatedEntry.note,
+                }
+              : entry,
+          ),
+        );
+      } else {
+        // Create new entry
+        console.log(selectedMood);
+        const newEntry = await createMoodEntry(note, selectedMood, now);
+
+        console.log(newEntry);
+        console.log(newEntry.mood);
+
+        // Add the new entry to the entries state
+        setEntries((prev) => [
+          ...prev,
+          {
+            id: newEntry.id.toString(),
+            date: newEntry.date,
+            mood: newEntry.mood,
+            note: newEntry.note,
+          },
+        ]);
+      }
+    } catch (err) {
+      console.error("Error saving mood entry:", err);
+      setError(
+        err instanceof Error ? err.message : "Failed to save your mood entry",
+      );
+    } finally {
       setIsSubmitting(false);
-    }, 500);
+    }
   };
 
   return (
@@ -90,11 +140,11 @@ export default function MoodForm({ onAddEntry, entries }: MoodFormProps) {
               key={mood}
               onClick={() => setSelectedMood(mood)}
               className={`text-4xl p-4 rounded-full transition-all duration-300 transform hover:scale-110 shadow-sm
-                ${
-                  selectedMood === mood
-                    ? `${moodColors[mood]} text-white scale-110 shadow-md`
-                    : "bg-secondary hover:bg-secondary/80"
-                }`}
+               ${
+                 selectedMood === mood
+                   ? `${moodColors[mood]} text-white scale-110 shadow-md`
+                   : "bg-secondary hover:bg-secondary/80"
+               }`}
               aria-label={`Select mood: ${mood}`}
             >
               {mood}
@@ -111,12 +161,25 @@ export default function MoodForm({ onAddEntry, entries }: MoodFormProps) {
           />
         </div>
 
+        {error && (
+          <div className="p-3 mb-4 rounded-md bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm">
+            {error}
+          </div>
+        )}
+
         <Button
           onClick={handleSubmit}
           disabled={!selectedMood || isSubmitting}
           className="w-full bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 transition-all duration-300"
         >
-          {todayEntry ? "Update" : "Save"} Today&apos;s Mood
+          {isSubmitting ? (
+            <span className="flex items-center gap-2">
+              <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              Saving...
+            </span>
+          ) : (
+            <>{todayEntry ? "Update" : "Save"} Today's Mood</>
+          )}
         </Button>
       </CardContent>
     </Card>
