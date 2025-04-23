@@ -272,11 +272,12 @@ export const convertStrapiEntriesToAppFormat = (
   strapiEntries: StrapiMoodEntry[],
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 ): any[] => {
-  console.log(strapiEntries);
-  return strapiEntries.map((entry) => ({
-    id: entry.id.toString(),
-    date: entry.date,
-    mood: entry.mood,
-    note: entry.note,
-  }));
+  return strapiEntries
+    ? strapiEntries.map((entry) => ({
+        id: entry.id.toString(),
+        date: entry.date,
+        mood: entry.mood,
+        note: entry.note,
+      }))
+    : [];
 };
