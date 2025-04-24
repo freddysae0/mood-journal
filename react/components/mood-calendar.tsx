@@ -2,7 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import type { MoodEntry } from "@/types/mood";
+import {
+  type BackendMoodType,
+  type MoodEntry,
+  parseMoodToBackend,
+  parseMoodToFrontend,
+} from "@/types/mood";
 import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
@@ -49,8 +54,8 @@ export default function MoodCalendar({ entries }: MoodCalendarProps) {
     setSelectedDay(entry || null);
   };
 
-  const getMoodColor = (mood: string) => {
-    switch (mood) {
+  const getMoodColor = (mood: BackendMoodType) => {
+    switch (parseMoodToFrontend(mood)) {
       case "😊":
         return "bg-gradient-to-br from-green-400 to-emerald-500 text-white";
       case "😐":
